@@ -104,11 +104,12 @@ const reversePopButton = () => {
         darkButton.style.opacity = '1';
       }, 100);
     }
-  } 
+  }
 };
 setTimeout(() => {
   document.getElementById('popbutton').onclick = reversePopButton;
 }, 0);
+
 // menuButton.js
 function menuClick(event) {
   const target = event.target;
@@ -122,6 +123,7 @@ function menuClick(event) {
     document.removeEventListener('click', menuClick);
   }
 }
+
 const clickMenuButton = () => {
   const mobileToc = document.getElementById('mobiletoc');
   if (!mobileToc) {
