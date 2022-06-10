@@ -1,338 +1,379 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+<meta  lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="Cache-Control" content="no-siteapp">
-    <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
-    
-    <meta name="referrer" content="no-referrer-when-downgrade">
-    
-    <meta name="renderer" content="webkit"/>
-    <meta name="force-rendering" content="webkit"/>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
-    <script>if (/*@cc_on!@*/false || (!!window.MSInputMethodContext && !!document.documentMode)) window.location.href="https://support.dmeng.net/upgrade-your-browser.html?referrer="+encodeURIComponent(window.location.href); </script>
-    
-    
-        <link rel="shortcut icon" href="/images/favicon.ico">
-    
-     
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/5.13.1/css/all.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/vuetify@2.2.30/dist/vuetify.min.css" rel="stylesheet">
-    
-<link rel="stylesheet" href="/css/main.css">
-
-    
-    
-
-
-
-
-
-
-
-    
-    
-    
-        <script>
-  if (typeof MathJax === 'undefined') {
-    window.MathJax = {
-      loader: {
-        
-            load: ['[tex]/mhchem'],
-        
-        source: {
-          '[tex]/amsCd': '[tex]/amscd',
-          '[tex]/AMScd': '[tex]/amscd'
-        }
-      },
-      tex: {
-        inlineMath: {'[+]': [['$', '$']]},
-        
-            packages: {'[+]': ['mhchem']},
-        
-        tags: 'ams'
-      },
-      options: {
-        renderActions: {
-          findScript: [10, doc => {
-            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
-              const display = !!node.type.match(/; *mode=display/);
-              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
-              const text = document.createTextNode('');
-              node.parentNode.replaceChild(text, node);
-              math.start = {node: text, delim: '', n: 0};
-              math.end = {node: text, delim: '', n: 0};
-              doc.math.push(math);
-            });
-          }, '', false],
-          insertedScript: [200, () => {
-            document.querySelectorAll('mjx-container').forEach(node => {
-              let target = node.parentNode;
-              if (target.nodeName.toLowerCase() === 'li') {
-                target.parentNode.classList.add('has-jax');
-              }
-            });
-          }, '', false]
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <meta name="theme-color" content="#fff" id="theme-color">
+  <link rel="icon" href="/img/Kaze.png">
+  <title>theme-kaze demo</title>
+  <script>
+    // control reverse button
+    var reverseDarkList = {
+      dark: 'light',
+      light: 'dark'
+    };
+    var themeColor = {
+      dark: '#1c1c1e',
+      light: '#fff'
+    }
+    // get the data of css prefers-color-scheme
+    var getCssMediaQuery = function() {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    };
+    // reverse current darkmode setting function
+    var reverseDarkModeSetting = function() {
+      var setting = localStorage.getItem('user-color-scheme');
+      if(reverseDarkList[setting]) {
+        setting = reverseDarkList[setting];
+      } else if(setting === null) {
+        setting = reverseDarkList[getCssMediaQuery()];
+      } else {
+        return;
+      }
+      localStorage.setItem('user-color-scheme', setting);
+      return setting;
+    };
+    // apply current darkmode setting
+    var setDarkmode = function(mode) {
+      var setting = mode || localStorage.getItem('user-color-scheme');
+      if(setting === getCssMediaQuery()) {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else if(reverseDarkList[setting]) {
+        document.documentElement.setAttribute('data-user-color-scheme', setting);
+        document.getElementById('theme-color').content = themeColor[setting];
+      } else {
+        document.documentElement.removeAttribute('data-user-color-scheme');
+        localStorage.removeItem('user-color-scheme');
+        document.getElementById('theme-color').content = themeColor[getCssMediaQuery()];
       }
     };
-    (function () {
+    setDarkmode();
+  </script>
+  <script>
+    function loadScript(url, cb) {
       var script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
-      script.defer = true;
-      document.head.appendChild(script);
-    })();
-  } else {
-    MathJax.startup.document.state(0);
-    MathJax.texReset();
-    MathJax.typeset();
-  }
-</script>
-          
+      script.src = url;
+      if (cb) script.onload = cb;
+      script.async = true;
+      document.body.appendChild(script);
+    }
+  </script>
+  
+  <link rel="preload" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css" as="style" >
+  <link rel="preload" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css" as="style" >
+  
+  <link rel="preload" href="//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js" as="script">
+  
+  
+  <link rel="preload" href="/js/lib/lozad.min.js" as="script">
+  
+  
+  
+  
+  
+  
+  
+  
+<link rel="stylesheet" href="/css/main.css">
 
-    
-    
-    
-    
-    <title>
-          
-            梧桐的个人博客
-        
-    </title>
-    
-    
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1946621_vpj3dq9ceqa.css">
+
+  
+  
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1952792_89b4ac4k4up.css">
+
+  
+  
+  
 <meta name="generator" content="Hexo 6.2.0"></head>
-<body>
-    <div id="app">
-        <v-app>
-            <v-content id="page">
-                <v-container fluid>
-                    <v-row>
-                        <v-col cols="2" class="d-none d-md-block">
-                            <div id="sidebar" class="float-right">
-    <a href="/" rel="home">
-        <v-avatar size=96>
-            <img id="logo" src="/images/avatar.webp">     
-        </v-avatar> 
-    </a>
-    <v-divider></v-divider>
-    <div class="mini-menu">
-        <v-btn icon href="/">
-            <v-icon>home</v-icon>
-        </v-btn>
-        <v-btn icon href="/categories/">
-            <v-icon>folder</v-icon>
-        </v-btn>
-        <v-btn icon href="/tags/">
-            <v-icon>bookmark</v-icon>
-        </v-btn>
-        <v-btn icon @click="SetNightMode">
-            <v-icon>{{ nightMode }}</v-icon>
-        </v-btn>
-    </div>
-    <v-list id="main-menu" class="font-weight-bold" flat>
-        
-            
-            <v-list-item href="/archives/" link>
-            <v-list-item-icon><v-icon>archive</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                Archives
-            </v-list-item-content>
-            </v-list-item>
-        
-            
-            <v-list-item href="/about/" link>
-            <v-list-item-icon><v-icon>account_circle</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                About
-            </v-list-item-content>
-            </v-list-item>
-        
-            
-            <v-list-item href="https://garybear.cn/" link>
-            <v-list-item-icon><v-icon>rss_feed</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                我的博客
-            </v-list-item-content>
-            </v-list-item>
-        
-            
-            <v-list-item href="https://garybear.cn/hexo-theme-insulin/doc/#/" link>
-            <v-list-item-icon><v-icon>insert_drive_file</v-icon></v-list-item-icon>
-            <v-list-item-content>
-                说明文档
-            </v-list-item-content>
-            </v-list-item>
-        
-    </v-list>
-    <v-divider></v-divider>
-    
-        <v-list id="sub-menu" class="font-weight-medium" dense>
-            
-        </v-list>    
-    
 
-    <div id="footer">
-        <div class="footer-social">
-            
-                
-                <v-btn icon href="/chentl0912@outlook.com" target="_blank">
-                    <v-icon>fas fa-envelope</v-icon>
-                </v-btn>
-            
-                
-                <v-btn icon href="https://github.com/wutong1997" target="_blank">
-                    <v-icon>fab fa-github</v-icon>
-                </v-btn>
-            
-        </div>
-        <v-divider></v-divider>
-        <div class="footer-content">
-            
-                <span id="busuanzi_container_site_uv" style="display: none;"> 
-                    Total Visitors <span id="busuanzi_value_site_uv"></span>
-                </span>
-                <br>
-            
-            <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a></span><br>
-            <span>Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-            <span>
-                &copy; 2015 - 2022 
-                WuTong
-            </span>
-        </div>
+
+<body>
+  <div class="wrapper">
+    
+    <nav class="navbar">
+  <div class="navbar-logo">
+    <span class="navbar-logo-main">
+      
+      <img class="navbar-logo-img" src="/img/Kaze.png">
+      
+      <span class="navbar-logo-dsc">theme-kaze demo</span>
+    </span>
+  </div>
+  <div class="navbar-menu">
+    
+    <a href="/" class="navbar-menu-item">Home </a>
+    
+    <a href="/archives" class="navbar-menu-item">Archive </a>
+    
+    <a href="/tags" class="navbar-menu-item">Tags </a>
+    
+    <a href="/categories" class="navbar-menu-item">Categories </a>
+    
+    <a href="/about" class="navbar-menu-item">About </a>
+    
+    <a href="/links" class="navbar-menu-item">Friends </a>
+    
+    <a class="navbar-menu-item darknavbar" id="dark"><i class="iconfont icon-weather"></i></a>
+  </div>
+</nav>
+    
+    <div class="section-wrap">
+      <div class="container">
+        <div class="columns">
+          <main class="main-column">
+<div class="card">
+  
+  <article class="card card-content">
+    <a href="/2022/06/10/readme/">
+      <h1 class="post-title">
+        
+      </h1>
+    </a>
+    <div class="card-excerpt">
+      
+      CRM项目笔记​																										...
+      
     </div>
+    <div class="card-post-footer">
+      <div class="post-meta">
+        <time datetime="2022-06-10T11:15:58.148Z" style="display: flex; align-items: center;">
+          <i class="iconfont icon-calendar" style="margin-right: 2px;"></i>
+          <span>2022-06-10</span>
+        </time>
+        
+        
+        <span class="dot"></span>
+        <span>1.5k words</span>
+        
+      </div>
+      <a href="/2022/06/10/readme/">Read More </a>
+    </div>
+  </article>
 </div>
 
-                        </v-col>
-                        <v-col cols="12" md="10">
-                            <v-row>
-  <v-col cols="12" md="8" align-self="end">
-    <div id="site-header">
-      <div id="site-title">
-        <a href="/" rel="home">梧桐的个人博客</a>
-      </div>
-      <div id="site-description"></div>
-      <div id="mobile-menu" class="d-block d-md-none">
-        <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-inner-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
-        <div class="mobile-mini-menu">
-          <v-btn icon href="/">
-              <v-icon>home</v-icon>
-          </v-btn>
-          <v-btn icon href="/categories/">
-              <v-icon>folder</v-icon>
-          </v-btn>
-          <v-btn icon href="/tags/">
-              <v-icon>bookmark</v-icon>
-          </v-btn>
-          <v-btn icon @click="SetNightMode">
-              <v-icon>{{ nightMode }}</v-icon>
-          </v-btn>
-          
+</main>
+          <aside class="left-column">
             
-            <v-btn icon href="/archives/">
-              <v-icon>archive</v-icon>
-            </v-btn>
-          
-            
-            <v-btn icon href="/about/">
-              <v-icon>account_circle</v-icon>
-            </v-btn>
-          
-            
-            <v-btn icon href="https://garybear.cn/">
-              <v-icon>rss_feed</v-icon>
-            </v-btn>
-          
-            
-            <v-btn icon href="https://garybear.cn/hexo-theme-insulin/doc/#/">
-              <v-icon>insert_drive_file</v-icon>
-            </v-btn>
-          
-        </div>
-      </div>    
-    </div>
-  </v-col>  
-  <v-col cols="4" align-self="end" class="d-none d-md-block">
-    <v-col align-self="end">
-      <v-text-field label="请输入关键字" data-src="search.xml" v-model="searchHeaderValue" prepend-icon="search" clearable clear-icon="clear" @keydown.enter="EnterSearch(searchHeaderValue,false)"></v-text-field>
-    </v-col> 
-  </v-col>
-</v-row>
+            <div class="card card-author">
+              
+<img src="/img/Kaze.png" class="author-img">
 
-                            <v-card class="elevation-2 index-card">
-  
-    <article class="index-article">
-      
-      <div class="index-article-header">
-        <v-row no-gutters>
-          <v-col cols="auto">
-            <div class="index-article-header-date font-weight-medium">
-              2022-06-10
+<p class="author-name">theme-kaze</p>
+<p class="author-description">designed by theme-kaze</p>
+<div class="author-message">
+  <a class="author-posts-count" href="/archives">
+    <span>1</span>
+    <span>Posts</span>
+  </a>
+  <a class="author-categories-count" href="/categories">
+    <span>0</span>
+    <span>Categories</span>
+  </a>
+  <a class="author-tags-count" href="/tags">
+    <span>0</span>
+    <span>Tags</span>
+  </a>
+</div>
+
             </div>
-          </v-col>
-          <v-spacer></v-spacer>
-          <v-col cols="auto">
             
-          </v-col>
-        </v-row>
-        <span>
+            <div class="sticky-tablet">
+  
+  
+  
+  <article class="card card-content">
+    <div class="categories-card">
+  <div class="categories-header"><i class="iconfont icon-fenlei" style="padding-right: 2px;"></i>Categories</div>
+  <div class="categories-list">
+    
+  </div>
+</div>
+  </article>
+  
+  <article class="card card-content">
+    <div class="tags-card">
+  <div class="tags-header"><i class="iconfont icon-biaoqian" style="padding-right: 2px;"></i>hot tags</div>
+  <div class="tags-list">
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content widescreen-archive">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>Archive</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+    
+      <a href="/archives/2022" class="archive-card-list-item">
+          2022
+          <span class="archive-card-list-item-badge">1</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+          <aside class="right-column">
+            <div class="sticky-widescreen">
+  
+  
+  
+  <article class="card card-content">
+    <div class="recent-posts-card">
+  <div class="recent-posts-header"><i class="iconfont icon-wenzhang_huaban" style="padding-right: 2px;"></i>Recent Posts</div>
+  <div class="recent-posts-list">
+    
+      <div class="recent-posts-item">
+        <div class="recent-posts-item-title">2022-06-10</div>
+        <a href="/2022/06/10/readme/"><div class="recent-posts-item-content"></div></a>
+      </div>
+    
+  </div>
+</div>
+  </article>
+  
+  
+  <article class="card card-content">
+    <div class="archive-card">
+  <div class="archive-card-header"><i class="iconfont icon-wodebaobiao" style="padding-right: 2px;"></i>Archive</div>
+  <div class="archive-card-list">
+    
+    
+    
+      
+        
+        
+        
+      
+    
+    
+      <a href="/archives/2022" class="archive-card-list-item">
+          2022
+          <span class="archive-card-list-item-badge">1</span>
+      </a>
+    
+  </div>
+</div>
+  </article>
+  
+</div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <footer class="footer">
+  <div class="footer-container">
+    <div>
+      <div class="footer-dsc">
+        <span>Copyright ©
           
-            <a class="index-article-header-category font-weight-bold" href="/2022/06/10/readme/">Uncategorized></a>
-           
-        </span> 
-        <a class="index-article-header-title font-weight-medium" href="/2022/06/10/readme/"></a>
+          2020 -
+          
+          2022
+        </span>
+        <a href="/" class="footer-link">theme-kaze demo </a>
       </div>
-      
-      <div class="index-article-content">
-        
-          CRM项目笔记​																																						                                                                     颜色​																																																									Apricot​																																																									Peach​                                																			...
-        
-      </div>
-      
-      <div class="index-article-readmore ">
-        <v-btn text href="/2022/06/10/readme/">Read More</v-btn>
-      </div>
-      <v-divider></v-divider>
-    </article> 
-   
-</v-card>  
+    </div>
 
-         
-                            <div id="mobile-footer" class="d-block d-md-none">
-                                <v-divider></v-divider>
-                                <div id="mobile-footer-content">
-                                    <span>Theme: <a target="_blank" rel="noopener" href="https://github.com/kb1000fx/hexo-theme-insulin">Insulin</a> &nbsp; Powered by <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a></span><br>
-                                    <span> &copy; 2015 - 2022 WuTong</span>
-                                </div>
-                            </div>                   
-                        </v-col>                                            
-                    </v-row>
-                </v-container>
-            </v-content>
-        </v-app>
+    
+    <div class="footer-dsc">
+      
+      
+      Powered by
+      <a href="https://hexo.io/" class="footer-link" target="_blank" rel="nofollow noopener noreferrer">&nbsp;Hexo </a>
+      
+      
+      <span>&nbsp;|&nbsp;</span>
+      
+      
+      
+      Theme -
+      <a href="https://github.com/theme-kaze" class="footer-link" target="_blank"
+        rel="nofollow noopener noreferrer">&nbsp;Kaze</a>
+      
     </div>
     
-<script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
-<script src="https://cdn.jsdelivr.net/npm/vuetify@2.2.30"></script>
-<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/js-base64@3.5.2/base64.min.js"></script>
+    
+    
+    
+</footer>
+  <a role="button" id="scrollbutton" class="basebutton" >
+  <i class="iconfont icon-arrowleft button-icon"></i>
+</a>
+<a role="button" id="menubutton" class="basebutton">
+  <i class="iconfont icon-menu button-icon"></i>
+</a>
+<a role="button" id="popbutton" class="basebutton">
+  <i class="iconfont icon-expand button-icon"></i>
+</a>
+<a role="button" id="darkbutton" class="basebutton darkwidget">
+  <i class="iconfont icon-weather button-icon"></i>
+</a>
 
+  
+  
+  
+  <script>
+  var addImgLayout = function () {
+    var img = document.querySelectorAll('.post-content img');
+    var i;
+    for (i = 0; i < img.length; i++) {
+      var wrapper = document.createElement('a');
+      wrapper.setAttribute('data-fslightbox', 'gallery');
+      wrapper.setAttribute('href', img[i].getAttribute('data-src'));
+      wrapper.setAttribute('style', 'width: 100%; display: flex; justify-content: center;');
+      img[i].parentElement.insertBefore(wrapper, img[i]);
+      wrapper.appendChild(img[i]);
+    }
+    refreshFsLightbox();
+  }
+</script>
+<script>loadScript("//cdn.jsdelivr.net/npm/fslightbox@3.1.0/index.min.js", addImgLayout)</script>
+  
+  
+  
 <script src="/js/main.js"></script>
 
-
-
-
-    <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-
-
-
-
-
+  
+  
+  <script>
+    var addLazyload = function () {
+      var observer = lozad('.lozad', {
+        load: function (el) {
+          el.srcset = el.getAttribute('data-src');
+        },
+        loaded: function (el) {
+          el.classList.add('loaded');
+        }
+      });
+      observer.observe();
+    }
+  </script>
+  <script>loadScript("/js/lib/lozad.min.js", addLazyload)</script>
+  
+  
 </body>
+
 </html>

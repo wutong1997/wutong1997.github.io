@@ -1,176 +1,140 @@
-var app = new Vue({
-    el: '#app',
-    vuetify: new Vuetify(),
-    data(){
-        return {
-            currentPage: 1,
-            nightMode: "wb_sunny",
-            menuHover: false,
-            tagHover: false,
-            commentTab: 0,
-            commentConfig: null,
-            commentFunction: {       
-                gitalk: ()=>{
-                    var gitalk = new Gitalk({
-                        clientID: this.commentConfig.gitalk_client_id,
-                        clientSecret: this.commentConfig.gitalk_client_secret,
-                        repo: this.commentConfig.gitalk_repo,
-                        owner: this.commentConfig.gitalk_owner,
-                        admin: [this.commentConfig.gitalk_owner],
-                        id:  md5(location.pathname) ,
-                        distractionFreeMode: this.commentConfig.gitalk_distractionFreeMode,
-                    });
-                    gitalk.render('gitalk-container');
-                },
-                valine: ()=>{
-                    var option = {
-                        el: '#vcomments',
-                        appId: this.commentConfig.valine_leancloud_app_id,
-                        appKey: this.commentConfig.valine_leancloud_app_key,
-                    };
-                    new Valine(Object.assign(option, this.commentConfig.valine_option));
-                },
-                changyan: ()=>{
-                    (function(){
-                        var appid = this.commentConfig.changyan_app_id;
-                        var conf = this.commentConfig.changyan_app_key;
-                        var width = window.innerWidth || document.documentElement.clientWidth;
-                        if (width < 960) {
-                            window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="http://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("http://changyan.sohu.com/upload/changyan.js",function(){window.changyan.api.config({appid:appid,conf:conf})}); 
-                        } 
-                    })(); 
-                },
-                disqus: ()=>{
-                    (function () {
-                        var d = document, s = d.createElement('script');
-                        s.src = '//'+this.commentConfig.disqus_shortname+'.disqus.com/embed.js';
-                        s.setAttribute('data-timestamp', +new Date());
-                        (d.head || d.body).appendChild(s);
-                    })();
-                },
-                livere: ()=>{
-                    (function (d, s) {
-                        var j, e = d.getElementsByTagName(s)[0];
-                        if (typeof LivereTower === 'function') { return; }
-                        j = d.createElement(s);
-                        j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
-                        j.async = true;
-                        e.parentNode.insertBefore(j, e);
-                    })(document, 'script');
-                },
-            },
-            searchHeaderValue: null,
-            searchPageValue: null,
-            searchData: new Array(),
-        }
-    },
+/* eslint-disable no-undef */
+// console.js
+console.log(String.raw`
+          _____                    _____                    _____                    _____          
+         /\    \                  /\    \                  /\    \                  /\    \         
+        /::\____\                /::\    \                /::\    \                /::\    \        
+       /:::/    /               /::::\    \               \:::\    \              /::::\    \       
+      /:::/    /               /::::::\    \               \:::\    \            /::::::\    \      
+     /:::/    /               /:::/\:::\    \               \:::\    \          /:::/\:::\    \     
+    /:::/____/               /:::/__\:::\    \               \:::\    \        /:::/__\:::\    \    
+   /::::\    \              /::::\   \:::\    \               \:::\    \      /::::\   \:::\    \   
+  /::::::\____\________    /::::::\   \:::\    \               \:::\    \    /::::::\   \:::\    \  
+ /:::/\:::::::::::\    \  /:::/\:::\   \:::\    \               \:::\    \  /:::/\:::\   \:::\    \ 
+/:::/  |:::::::::::\____\/:::/  \:::\   \:::\____\_______________\:::\____\/:::/__\:::\   \:::\____\
+\::/   |::|~~~|~~~~~     \::/    \:::\  /:::/    /\::::::::::::::::::/    /\:::\   \:::\   \::/    /
+ \/____|::|   |           \/____/ \:::\/:::/    /  \::::::::::::::::/____/  \:::\   \:::\   \/____/ 
+       |::|   |                    \::::::/    /    \:::\~~~~\~~~~~~         \:::\   \:::\    \     
+       |::|   |                     \::::/    /      \:::\    \               \:::\   \:::\____\    
+       |::|   |                     /:::/    /        \:::\    \               \:::\   \::/    /    
+       |::|   |                    /:::/    /          \:::\    \               \:::\   \/____/     
+       |::|   |                   /:::/    /            \:::\    \               \:::\    \         
+       \::|   |                  /:::/    /              \:::\____\               \:::\____\        
+        \:|   |                  \::/    /                \::/    /                \::/    /        
+         \|___|                   \/____/                  \/____/                  \/____/         
+see theme at https://github.com/0x4qE/hexo-theme-Kaze
+`);
+// darkmode.js
+// reverse button
+const scrollWidth = document.body.scrollWidth || document.documentElement.scrollWidth;
+let darkControlButton = null;
+if (scrollWidth <= 742) {
+  darkControlButton = document.querySelector('.darkwidget');
+} else {
+  darkControlButton = document.querySelector('.darknavbar');
+}
 
-    methods:{
-        PageChange: function(){
-            if(this.currentPage==1){
-                window.location.href = location.pathname.split("page/")[0];
-            }else{
-                window.location.href = location.pathname.split("page/")[0] +'page/' + this.currentPage + "/";
-            };
-        },
-        SetNightMode: function(){
-            if (this.$vuetify.theme.dark == true){
-                this.$vuetify.theme.dark = false;
-                localStorage.removeItem('insulin-dark');
-                this.nightMode = "wb_sunny";
-            }else{
-                this.$vuetify.theme.dark = true;
-                localStorage.setItem('insulin-dark', true);
-                this.nightMode = "brightness_2";
-            }
-        },
-        EnterSearch: function(varSearch,isLocal){
-            if(isLocal){
-                window.location.href = "/search/?" + encodeURI(varSearch); 
-            } else {
-                window.location.href = "https://www.google.com/search?q=" + encodeURI(varSearch) + " site:" + window.location.hostname;
-            };
-        },   
-        Search: function(varStr){
-            keywords=varStr.split(/\s+/);
-            var str="";
-            for (const data of this.searchData) {
-                var data_title = data.title;
-                var data_url = data.url;
-                var data_content = data.content.trim().replace(/<[^>]+>/g, '').toLowerCase();
-                var index_content = -1;
-                if (data_content !== '') {
-                for (const keyword of keywords) {
-                    if(index_content==-1){
-                    index_content = data_content.indexOf(keyword);
-                    }
-                };
-                };
-                if(index_content!=-1){
-                var start = index_content - 20;
-                var end = index_content + 80;
-                if(start < 0){start = 0;};
-                if(end > data_content.length){end = data_content.length;};
-                str += "<div class='search-post'><a class='search-post-title' href='" + data_url + "'>" + data_title + "</a><p class='search-post-content'>" + data_content.substr(start,end) + "</p><hr></div>";
-                };
-            };
-            for (const keyword of keywords) {
-                str=str.replace(eval('/'+keyword+'/g'),"<span class='search-post-bold'>" + keyword + "</span>")
-            };
-            if(str.length==0){
-                str="<div class='search-post'>暂无</div>";
-            };
-            document.getElementById("search-result").innerHTML=str;
-        },
-    },
-
-    mounted: function () {
-        //初始化评论设置
-        ((el)=>{
-            if(el){
-                this.commentConfig = JSON.parse(Base64.decode(el.getAttribute("data")));
-                for (let e in this.commentConfig.use) {
-                    eval('this.commentFunction.' + this.commentConfig.use[e] + '();');
-                }
-            }
-        })(document.getElementById('tabs-content'));
-        //初始化currentPage
-        ((varpage)=>{
-            if(varpage){
-                this.currentPage = parseInt(varpage);
-            };
-        })(location.pathname.split("page/")[1]);
-        //初始化NightMode
-        ((isDark)=>{
-            if(isDark){
-                this.$vuetify.theme.dark = true;
-                this.nightMode = "brightness_2";
-            }
-        })(localStorage.getItem('insulin-dark'));
-        //搜索
-        ((path)=>{
-            if(path=='/search/'){
-                axios({
-                    methods:"GET",
-                    url: "/search.xml",
-                    responseType: 'document',
-                }).then(res=>{
-                    var xmlDoc = res.data.getElementsByTagName("entry");
-                    //初始化搜索
-                    for (const post of xmlDoc) {
-                        this.searchData.push({
-                        title: post.getElementsByTagName("title")[0].childNodes[0].nodeValue,
-                        content: post.getElementsByTagName("content")[0].childNodes[0].nodeValue,
-                        url: post.getElementsByTagName("url")[0].childNodes[0].nodeValue,
-                        });
-                    }
-                    //搜索
-                    this.searchPageValue=decodeURI(location.search.substr(1));
-                    this.Search(this.searchPageValue); 
-                }).catch(error=>{
-                    console.error(error);
-                });
-            }
-        })(location.pathname);
-    },
-})
+darkControlButton.addEventListener('click', () => {
+  setDarkmode(reverseDarkModeSetting());
+});
+// scroll-up.js
+const smoothScrollToTop = () => {
+  let yTopValve = (window.pageYOffset || document.body.scrollTop || document.documentElement.scrollTop);
+  if (yTopValve > 1) {
+    window.requestAnimationFrame(smoothScrollToTop);
+    scrollTo(0, Math.floor(yTopValve * 0.85));
+  } else {
+    scrollTo(0, 0);
+  }
+};
+setTimeout(() => {
+  document.getElementById('scrollbutton').onclick = smoothScrollToTop;
+}, 0);
+// popbutton.js
+const reversePopButton = () => {
+  const scrollButton = document.getElementById('scrollbutton');
+  const menuButton = document.getElementById('menubutton');
+  const reverseButton = document.getElementById('popbutton');
+  const scrollWidth = document.body.scrollWidth || document.documentElement.scrollWidth;
+  if (scrollButton.style.display === 'flex') {
+    scrollButton.style.bottom = '32px';
+    scrollButton.style.opacity = '0';
+    reverseButton.style.transform = 'none';
+    setTimeout(() => {
+      scrollButton.style.display = 'none';
+    }, 100);
+  } else {
+    scrollButton.style.display = 'flex';
+    reverseButton.style.transform = 'rotate(90deg)';
+    setTimeout(() => {
+      scrollButton.style.bottom = '85px';
+      scrollButton.style.opacity = '1';
+    }, 100);
+  }
+  const mobileToc = document.getElementById('mobiletoc');
+  if (scrollWidth <= 862 && mobileToc) {
+    if (menuButton.style.display === 'flex') {
+      menuButton.style.right = '32px';
+      menuButton.style.opacity = '0';
+      setTimeout(() => {
+        menuButton.style.display = 'none';
+      }, 100);
+    } else {
+      menuButton.style.display = 'flex';
+      setTimeout(() => {
+        menuButton.style.right = '85px';
+        menuButton.style.opacity = '1';
+      }, 100);
+    }
+  }
+  const darkButton = document.querySelector('.darkwidget');
+  if (scrollWidth <= 742) {
+    if (darkButton.style.display === 'flex') {
+      darkButton.style.bottom = '32px';
+      darkButton.style.opacity = '0';
+      darkButton.style.transform = 'none';
+      setTimeout(() => {
+        darkButton.style.display = 'none';
+      }, 100);
+    } else {
+      darkButton.style.display = 'flex';
+      reverseButton.style.transform = 'rotate(90deg)';
+      setTimeout(() => {
+        darkButton.style.bottom = '138px';
+        darkButton.style.opacity = '1';
+      }, 100);
+    }
+  } 
+};
+setTimeout(() => {
+  document.getElementById('popbutton').onclick = reversePopButton;
+}, 0);
+// menuButton.js
+function menuClick(event) {
+  const target = event.target;
+  const mobileToc = document.getElementById('mobiletoc');
+  if (!mobileToc) {
+    return;
+  }
+  if (!mobileToc.contains(target)) {
+    mobileToc.style.display = 'none';
+    document.body.removeChild(mask);
+    document.removeEventListener('click', menuClick);
+  }
+}
+const clickMenuButton = () => {
+  const mobileToc = document.getElementById('mobiletoc');
+  if (!mobileToc) {
+    return;
+  }
+  mobileToc.style.display = 'block';
+  const mask = document.createElement('div');
+  mask.id = 'mask';
+  document.body.appendChild(mask);
+  setTimeout(() => {
+    document.addEventListener('click', menuClick);
+  }, 0);
+};
+setTimeout(() => {
+  document.getElementById('menubutton').onclick = clickMenuButton;
+}, 0);
