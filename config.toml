@@ -1,7 +1,7 @@
 ##########################################
 # 站点配置
 
-baseURL = "https://wutong1997.github.io/"
+baseURL = "https://wutong1997.github.io"
 title = "Chen.tl."
 languageCode = "zh-CN"
 hasCJKLanguage = true
