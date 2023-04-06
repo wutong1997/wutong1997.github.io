@@ -23,7 +23,7 @@
         
             <copyright>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</copyright>
         
-        <lastBuildDate>Fri, 07 Apr 2023 00:08:17 &#43;0800</lastBuildDate>
+        <lastBuildDate>Fri, 07 Apr 2023 00:16:02 &#43;0800</lastBuildDate>
         
             <atom:link rel="self" type="application/rss&#43;xml" href="https://wutong1997.github.io/rss.xml" />
         
@@ -131,7 +131,7 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;hexo&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;s&lt;/span&gt;  &lt;span class=&#34;err&#34;&gt;#&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;hexo&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;server&lt;/span&gt; 
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/static/hexobuild/hellopage.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/hellopage.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;22-github-发布&#34;&gt;2.2 github 发布&lt;/h4&gt;
 &lt;p&gt;在博客根目录下执行以下命令生成 public 文件夹，包含了网站的一些静态文件，用于提交至 github，hexo 只提交 public 文件夹&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
@@ -171,11 +171,11 @@
 &lt;pre tabindex=&#34;0&#34; class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-go&#34; data-lang=&#34;go&#34;&gt;&lt;span class=&#34;line&#34;&gt;&lt;span class=&#34;cl&#34;&gt;&lt;span class=&#34;nx&#34;&gt;ssh&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;keygen&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;t&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;rsa&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;-&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;C&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;用户邮箱&amp;#34;&lt;/span&gt;
 &lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
-&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/savessh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;/div&gt;&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/savessh.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;打开终端输入 &lt;code&gt;ssh -T git@github.com&lt;/code&gt; 测试 ssh 连接，成功连接后显示如下&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/savessh2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/savessh2.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在 github 上创建一个仓库用作以后博客的存储，仓库必须命名为 &lt;font color=&#39;RedOrange&#39;&gt; github用户名.github.io&lt;/font&gt;，并设置公开访问。进入仓库设置，配置Pages 发布站点，设置一下 branch 即可。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/pages.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/pages.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;在站点配置文件 _config.yml 的最下面指定仓库路径与分支。注意：冒号后面必须有一个空格，分支 branch 必须与仓库默认分支相同。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;div class=&#34;chroma&#34;&gt;
 &lt;table class=&#34;lntable&#34;&gt;&lt;tr&gt;&lt;td class=&#34;lntd&#34;&gt;
@@ -205,7 +205,7 @@
 &lt;p&gt;Gitalk 的评论内容可以直接在 GitHub 后台管理，不需要注册别的账号，比较方便。下面介绍一下 Gitalk 的添加与开放。&lt;/p&gt;
 &lt;h4 id=&#34;31-配置github&#34;&gt;3.1 配置github&lt;/h4&gt;
 &lt;p&gt;路径：&lt;code&gt;点击头像&lt;/code&gt; -&amp;gt; &lt;code&gt;settings&lt;/code&gt; -&amp;gt; &lt;code&gt;Developer settings&lt;/code&gt; -&amp;gt; &lt;code&gt;OAuth Apps&lt;/code&gt; -&amp;gt; &lt;code&gt;New OAuth App&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/developersettings.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/developersettings.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Application name&lt;/code&gt;：可以随意取一个应用的名字&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;HomePage URL&lt;/code&gt;：应用主页的完整链接，一般就是博客仓库的链接，不要加&lt;code&gt;/&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Application description&lt;/code&gt;：应用描述，可不写&lt;/p&gt;
@@ -278,21 +278,21 @@
 &lt;/span&gt;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
 &lt;/div&gt;
 &lt;/div&gt;&lt;p&gt;完成上述配置后保存更新即可看到评论功能。使用GitHub账户登录后即可评论。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/gitalkload.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/gitalkload.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;GitHub 后台对应的仓库下会自动生成 issues ，可对评论进行管理。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/issues.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/issues.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h3 id=&#34;4-github--jsdelivr-搭建图床&#34;&gt;4. GitHub + jsDelivr 搭建图床&lt;/h3&gt;
 &lt;p&gt;markdown 使用本地图片路径，在部署博客后图片不会显示，所以需要使用图床工具，用 URL 方式访问静态资源获取图片，这里使用 GitHub 作为图床，用于存放博客图片，操作如下：&lt;/p&gt;
 &lt;h4 id=&#34;41-方法一&#34;&gt;4.1 方法一&lt;/h4&gt;
 &lt;p&gt;&lt;em&gt;&lt;strong&gt;不建议使用此方法&lt;/strong&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;p&gt;在 GitHub 账户下新建一个用于存放博客图片的仓库（略）&lt;/p&gt;
 &lt;p&gt;生成一个 token，路径：&lt;code&gt;点击头像&lt;/code&gt; -&amp;gt; &lt;code&gt;settings&lt;/code&gt; -&amp;gt; &lt;code&gt;Developer settings&lt;/code&gt; -&amp;gt; &lt;code&gt;Personal access tokens&lt;/code&gt; -&amp;gt; &lt;code&gt;Generate new token&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/token.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/token.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Note&lt;/code&gt;：随便填写，该 token 用于下面会讲到 PicGo 软件，可以以其为名&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Expiration&lt;/code&gt;：设置 token 有效天数&lt;/p&gt;
 &lt;p&gt;&lt;code&gt;Select scopes&lt;/code&gt;：选择作用域，一般就是仓库。其他不用勾选。最后生成一下 token&lt;/p&gt;
 &lt;p&gt;安装 &lt;a href=&#34;https://github.com/Molunerfinn/PicGo&#34;&gt;PicGo&lt;/a&gt;（向 GitHub 上传图片的好帮手，不要重复上传同一张图片，会失败，除非先删除仓库中的这张图片），根据提示输入信息。&lt;/p&gt;
-&lt;p&gt;&lt;img src=&#34;https://cdn.jsdelivr.net/gh/wutong1997/wutong1997.github.io@master/img/hexobuild/picgo1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://wutong1997.github.io/hexobuild/picgo1.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;h4 id=&#34;42-方法二&#34;&gt;4.2 方法二&lt;/h4&gt;
 &lt;p&gt;在本地博客文件的 source 文件夹下新建 img 文件夹用于存放博客图像，随后在 img 文件夹下新建用于存放对应博客图片的文件夹（命名应简洁且易于不同博客间的区分，例如当前博客可以使用命名：hexobuild）。博客部署后，由于博客仓库是公开的，所以可以直接获取图片的 url 链接，并于博客编写中引用。&lt;/p&gt;
 &lt;p&gt;&lt;font color=&#39;RedOrange&#39;&gt;注意！&lt;/font&gt; 可能有人觉得这样存在一个悖论问题：由于本地博客中的图片采用 url 链接方式进行在线显示，所以需要确保网络上存在这个图片的 url 链接，然而 url 链接需要博客部署后（本地博客文件中的 img 更新到 github 博客仓库）才能真实存在，然而在博客编写时就需要这个图片的链接，所以存在了矛盾。确实存在这样的问题，但可以先引用图片 url 链接，即使当前图片还没上传，&lt;strong&gt;但事实上我们知道上传后该图片的链接地址&lt;/strong&gt;，所以先填上再说。当博客部署后，博客将显示图片。优点：不用新建一个远程仓库。缺点：本地编写博客时看不到图片&lt;/p&gt;
