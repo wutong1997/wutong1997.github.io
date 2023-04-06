@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Chen.tl.</title>
     <subtitle type="html">MemE 是一个强大且可高度定制的 GoHugo 博客主题，专为个人博客设计。</subtitle>
-    <updated>2023-04-06T23:56:54&#43;08:00</updated>
+    <updated>2023-04-07T00:04:03&#43;08:00</updated>
     <id>https://wutong1997.github.io/</id>
     <link rel="alternate" type="text/html" href="https://wutong1997.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://wutong1997.github.io/atom.xml" />
@@ -20,7 +20,7 @@
             <title type="text">hexo&#43;github 搭建个人博客</title>
             <link rel="alternate" type="text/html" href="https://wutong1997.github.io/posts/hexo_github/" />
             <id>https://wutong1997.github.io/posts/hexo_github/</id>
-            <updated>2023-04-06T23:56:38&#43;08:00</updated>
+            <updated>2023-04-07T00:01:49&#43;08:00</updated>
             <published>2023-04-05T16:01:41&#43;08:00</published>
             
             <summary type="html">1. 准备工作 系统环境：win11 Node.js 下载 安装 Git(Git Bash) 下载 安装 hexo 是基于 Node.js 支持的框架，所以搭建 hexo……</summary>
@@ -309,13 +309,13 @@
                             
                             
                             
-                                <category scheme="https://wutong1997.github.io/categories/333/" term="333" label="333" />
+                                <category scheme="https://wutong1997.github.io/categories/%E5%AD%A6%E4%B9%A0/" term="学习" label="学习" />
                             
                         
                             
                             
                             
-                                <category scheme="https://wutong1997.github.io/categories/123/" term="123" label="123" />
+                                <category scheme="https://wutong1997.github.io/categories/%E5%8D%9A%E5%AE%A2/" term="博客" label="博客" />
                             
                         
                     
