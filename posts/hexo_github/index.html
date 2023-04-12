@@ -579,6 +579,8 @@
         
 
         
+            <div id="disqus_thread"></div>
+        
 
         
 
@@ -639,6 +641,37 @@
 
 
     
+
+        
+            <script>
+    function loadComments() {
+        if (!document.getElementById('disqus_thread')) {
+            return;
+        }
+        if (typeof DISQUS === 'undefined') {
+            const disqus_config = function() {
+                this.page.url = 'https:\/\/wutong1997.github.io\/posts\/hexo_github\/';
+                this.page.identifier = '\/posts\/hexo_github\/';
+                this.page.title = 'hexo\u002bgithub 搭建个人博客';
+            };
+            (function() {
+                const d = document, s = d.createElement('script'); s.async = true;
+                s.src = 'https://.disqus.com/embed.js';
+                s.setAttribute('data-timestamp', +new Date());
+                (d.head || d.body).appendChild(s);
+            })();
+        } else {
+            DISQUS.reset({
+                reload: true,
+                config: function() {
+                    this.page.url = 'https:\/\/wutong1997.github.io\/posts\/hexo_github\/';
+                    this.page.identifier = '\/posts\/hexo_github\/';
+                    this.page.title = 'hexo\u002bgithub 搭建个人博客';
+                }
+            });
+        }
+    }
+</script>
 
         
 
