@@ -4,7 +4,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom" xml:lang="zh-CN">
     <title type="text">Chen.tl.</title>
     <subtitle type="html"></subtitle>
-    <updated>2023-04-13T21:33:00&#43;08:00</updated>
+    <updated>2023-04-13T21:42:01&#43;08:00</updated>
     <id>https://wutong1997.github.io/</id>
     <link rel="alternate" type="text/html" href="https://wutong1997.github.io/" />
     <link rel="self" type="application/atom&#43;xml" href="https://wutong1997.github.io/atom.xml" />
@@ -14,6 +14,6 @@
             
                 <email>chentl0912@outlook.com</email>
             </author>
-    <rights>[CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh)</rights>
+    
     <generator uri="https://gohugo.io/" version="0.111.3">Hugo</generator>
 </feed>
